@@ -1,0 +1,167 @@
+<%- include ("../partials/header") %>
+<h1>
+	edit page
+</h1>
+
+
+<form action="/wynik/<%=wynik._id%>?_method=PUT" method="POST">
+       <p>Kto?</p>
+	<select name="wyniki[ktoG]" onchange="getVal(ktoh)">
+		<option value="kozi" >Kozi</option>
+		<option value="fulb" >Ful</option>
+	</select>
+
+
+    <p>Wygraleś?</p>
+
+<select value="<%= wynik.wygral %>" required>
+     <option value="Wygralem">Wygralem xD</option>
+     <option value="Przegralem">Przegralem xD</option>
+</select>	
+	
+
+
+    <p>Kim Graleś?</p>
+	<select name="wyniki[stronnictwo]" onchange="getVal(kim)">
+		<option>Rebelia</option>
+		<option>Imperium</option>
+	</select>
+
+
+
+ <p>Grales z Dodatkiem czy nie?</p>
+	<select name="wyniki[wersja]" onchange="getVal(rozszerz)">
+		<option>Rozszerzona</option>
+		<option>Podstawowa</option>
+	</select>
+
+
+
+    <p>W jakim ukladzie byla baza Rebeli?</p>
+	<select name="wyniki[base]" onchange="getVal(baza)" value="<%=wynik.base%>">
+        <option>Alderaan</option>
+        <option>Bespin</option>
+        <option>Bothawui</option>
+        <option>Cato Neimoidia</option>
+        <option>Corellia</option>
+        <option>Coruscant</option>
+        <option>Dagobah</option>
+        <option>Dantooine</option>
+        <option>Dathomir</option>
+        <option>Endor</option>
+        <option>Felucia</option>
+        <option>Geonosis</option>
+        <option>Hoth</option>
+        <option value="<%=wynik.base%>">Ilum</option>
+        <option>Kashyyyk</option>
+        <option>Kessel</option>
+        <option>Malastare</option>
+        <option>Mandalore</option>
+        <option>Mon Calamari</option>
+        <option>Mustafar</option>
+        <option>Mygeeto</option>
+        <option>Naboo</option>
+        <option>Nal Hutt</option>
+        <option>Ord Mantell</option>
+        <option>Rodia</option>
+        <option>Ryloth</option>
+        <option>Sullust</option>
+        <option>Tatooine</option>
+        <option>Toydaria</option>
+        <option>Utapau</option>
+        <option>Yavin</option>
+	</select>
+
+
+
+<!-- 
+    <p>Jaśli baza była przeniesiona,zaznacz z Ctrl w jakich ukladach? </p>
+	<select  name="zmiana" multiple onchange="baza2()">
+        <option>Alderaan</option>
+        <option>Bespin</option>
+        <option>Bothawui</option>
+        <option>Cato Neimoidia</option>
+        <option>Corellia</option>
+        <option>Coruscant</option>
+        <option>Dagobah</option>
+        <option>Dantooine</option>
+        <option>Dathomir</option>
+        <option>Endor</option>
+        <option>Felucia</option>
+        <option>Geonosis</option>
+        <option>Hoth</option>
+        <option>Ilum</option>
+        <option>Kashyyyk</option>
+        <option>Kessel</option>
+        <option>Malastare</option>
+        <option>Mandalore</option>
+        <option>Mon Calamari</option>
+        <option>Mustafar</option>
+        <option>Mygeeto</option>
+        <option>Naboo</option>
+        <option>Nal Hutt</option>
+        <option>Ord Mantell</option>
+        <option>Rodia</option>
+        <option>Ryloth</option>
+        <option>Sullust</option>
+        <option>Tatooine</option>
+        <option>Toydaria</option>
+        <option>Utapau</option>
+        <option>Yavin</option>
+	</select> -->
+
+ <p>Która była runda?</p>
+	<select name="wyniki[round]" onchange="getVal(runda)">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+		<option>9</option>
+		<option>10</option>
+		<option>11</option>
+		<option>12</option>
+		<option>13</option>
+		<option>14</option>
+	</select>
+
+
+
+ <p>Gdzie byl znacznik Rebeli?</p>
+	<select name="wyniki[token]" onchange="getVal(znacznik)" >
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+		<option>9</option>
+		<option>10</option>
+		<option>11</option>
+		<option>12</option>
+		<option>13</option>
+		<option>14</option>
+	</select>
+	
+	<button type="submit" id="button">Zatwierdz</button>
+</form>
+
+
+
+<p><a href="/">wroc do strony glownej</a></p>
+<p><a href="/wynik">zobacz wyniki</a></p>
+ 
+
+	<script>
+function getVal(y){
+return y.value
+}
+	</script>
+<%- include("../partials/footer") %>
