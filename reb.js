@@ -1,23 +1,27 @@
 var express 		= require ("express");
 var app 			= express();
-var bodyParser 		= require("body-parser")
-var cookieParser 	= require('cookie-parser')
-var flash 			= require('connect-flash')
-var path 			= require('path')
-var mongoose 		= require("mongoose")
-var methodOverride	= require("method-override")
+var bodyParser 		= require("body-parser");
+var cookieParser 	= require('cookie-parser');
+var flash 			= require('connect-flash');
+var path 			= require('path');
+var mongoose 		= require("mongoose");
+var methodOverride	= require("method-override");
 var Wynik 			= require("./models/wynik"),
 	passport 		= require("passport"),
 	LocalStrategy	= require("passport-local"),
 	Comment			= require("./models/comment"),
 	User			= require("./models/user"),
-	session = require("express-session");
+	session 		= require("express-session");
 
-// requiring routes 
+
+// requiring routes
 var commentRoutes   = require("./routes/comments"),
 	wynikRoutes		= require("./routes/wynik"),
 	indexRoutes		= require("./routes/index");
-	
+	mapRoutes		= require("./routes/map");
+
+
+
 
 mongoose.connect("mongodb://localhost/wyniki_v2", {useUnifiedTopology: true,
 useNewUrlParser: true,});
@@ -55,7 +59,7 @@ app.use(function(req, res, next){
 
 
 
-
+app.use(mapRoutes);
 app.use(indexRoutes);
 app.use("/wynik", wynikRoutes);
 app.use("/wynik/:id/comments/", commentRoutes);
@@ -63,6 +67,6 @@ app.use("/wynik/:id/comments/", commentRoutes);
 
 
 
-app.listen(3000, function(){
+app.listen(3001, function(){
 	console.log("serwer aktywny");
 });

@@ -10,7 +10,7 @@ var middleware = require("../middleware")
 // ta sciezka pokazuje strone startowa
 router.get("/", function(req,res){
 	// res.render odda uzytkownikowi plik ktรณry wpiszemy
-	res.render("index")	
+	res.render("index");
 })
 
 
@@ -52,21 +52,21 @@ router.post('/register', function(req, res){
 			res.redirect("/wynik");
 		});
 	});
-});				
+});
 // LOGIN ROUTES
 router.get("/login", function(req, res){
 	res.render("login")
 });
-			
+
 // login logic, middleware
 router.post("/login", passport.authenticate("local",{
 	successRedirect:"/wynik",
 	failureRedirect:"/login"
 }) ,function(req,res){
-	
+
 });
 
-// logout route 
+// logout route
 router.get("/logout", function(req, res){
 	req.logout();
 	req.flash("success", "Logged you out!")

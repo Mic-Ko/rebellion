@@ -13,7 +13,6 @@ router.get("/", function(req, res){
 		else{
 		res.render('wynik/wynik', {wynik: allWyniki});
 		}
-		
 	})
 });
 
@@ -21,7 +20,7 @@ router.get("/", function(req, res){
 // odsylacz do formy do wypelniania wynikoiw
 router.get("/new", middleware.isLoggedIn, function(req,res){
 	// res.render odda uzytkownikowi plik ktรณry wpiszemy
-	res.render("wynik/formul")	
+	res.render("wynik/formul")
 });
 
 
@@ -35,30 +34,13 @@ router.get("/:id", function(req, res){
 			res.render("wynik/show",{wynik: foundWynik});
 		}
 	});
-	
 });
 
 
 
 
-
-
-
-// router.get("/:id", function(req, res){
-// 	Wynik.findById(req.params.id, function(err, foundWynik){
-// 		if(err){
-// 			console.log(err)
-// 		}
-// 		else{
-// 			res.render("wynik/show",{wynik: foundWynik});
-// 		}
-// 	});
-	
-// });
-
 // wysyła do bazy danych co chcemy i wraca na strone z wynikami
 router.post("/", middleware.isLoggedIn, function(req, res){
-	
 	var ktoG= req.body.wynik.ktoG;
 	var wygral= req.body.wynik.wygral;
 	var stronnictwo= req.body.wynik.stronnictwo;
@@ -77,7 +59,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 		}
 		else{
 			res.redirect("/wynik")
-		}	
+		}
 	});
 });
 
@@ -92,7 +74,7 @@ router.get("/:id/edit", middleware.checkWynikOwnership, function(req, res){
 		}
 	});
 });
-	
+
 // matedoa na uaktualnienie posta Blog.findByIdAndUpdate(id, newData, callback)
 router.put("/:id", middleware.checkWynikOwnership, function(req, res){
 	Wynik.findByIdAndUpdate(req.params.id, req.body.wyniki, function(err, updatedBlog){
@@ -113,7 +95,7 @@ router.delete("/:id",middleware.checkWynikOwnership, function(req, res){
 			res.redirect("/wynik")
 		}
 	})
-});		
+});
 
 
 
@@ -181,7 +163,7 @@ module.exports= router;
 // 		else{
 // 		res.render('campgrounds/index', {campgrounds: allCampgrounds});
 // 		}
-		
+
 // 	})
 // 	// res.render('campgrounds', {campgrounds: campgrounds});
 // });
@@ -190,7 +172,7 @@ module.exports= router;
 // // forma do wypełniena zeby utworzyc nowy oboz
 // router.get("/new", isLoggedIn, function(req, res){
 // 	res.render("campgrounds/new");
-	
+
 // });
 
 // // show route
@@ -204,7 +186,7 @@ module.exports= router;
 // 			res.render("campgrounds/show",{campground: foundCampground});
 // 		}
 // 	});
-	
+
 // })
 
 // //create route
@@ -235,6 +217,6 @@ module.exports= router;
 // 	}
 // 	res.redirect("/login")
 // }
-		
+
 
 // module.exports= router;

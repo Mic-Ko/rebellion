@@ -16,9 +16,7 @@ router.get("/new",middleware.isLoggedIn, function(req, res){
 		}else{
 			res.render("comments/new", {wynik: wynik});
 		}
-		
 	});
-		
 });
 
 // Comment create
@@ -40,7 +38,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 					res.redirect("/wynik/" + wynik._id);
 				}
 			})
-			
 		}
 	});
 });
@@ -73,7 +70,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
 
 // comment destoy
 router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
-	Comment.findByIdAndRemove(req.params.comment_id, function(err){	
+	Comment.findByIdAndRemove(req.params.comment_id, function(err){
 		if(err){
 			res.redirect("back");
 		}else{
@@ -81,7 +78,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 			res.redirect("/campgrounds/" + req.params.id);
 		}
 	});
-});		
+});
 
 
 
