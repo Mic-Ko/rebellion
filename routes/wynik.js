@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Wynik = require("../models/wynik");
 var middleware = require("../middleware");
+var User		= require("../models/user");
 
 
 // ta sciezka pokazyje wyniki
@@ -41,7 +42,10 @@ router.get("/:id", function(req, res){
 
 // wysyła do bazy danych co chcemy i wraca na strone z wynikami
 router.post("/", middleware.isLoggedIn, function(req, res){
-	var ktoG= req.body.wynik.ktoG;
+	var ktoG= {
+		id:req.user._id,
+		username: req.user.username
+	};
 	var kto= req.body.wynik.kto;
 	var wygral= req.body.wynik.wygral;
 	var stronnictwo= req.body.wynik.stronnictwo;

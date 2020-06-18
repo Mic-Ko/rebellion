@@ -3,7 +3,13 @@ var mongoose= require("mongoose");
 
 // schemat nowo powstalej bazy danych
 	var wynikSchema = new mongoose.Schema({
-		ktoG:String,
+		ktoG:{
+			id: {
+				type:mongoose.Schema.Types.ObjectId,
+				ref: "User"
+			},
+			username: String
+		},
 		kto:String,
 		wygral:String,
 		stronnictwo:String,
