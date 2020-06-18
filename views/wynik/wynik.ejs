@@ -9,12 +9,13 @@
 		<div class="container">
 
 
-			<h1>Witaj w rankingu Star Wars Rebelii!</h1>
+			<h1>Welcome galactic adventure !!</h1>
 			<p>
-				Dodawaj swoje wyniki, z rozgrywek z znajomymi, lig, czy batali z ciemna strona mocy!!!
+				On this page you can record your score from best Star Wars strategic board Game SW Rebellion. Record your score , Check Ranking game results and remember always be ware Dark Side never sleep!!!
 			</p>
 			<p>
-			<a class="btn btn-primary btn-lg" href="/wynik/new">Dodaj wynik</a>
+			<a class="btn btn-primary btn-lg" href="/wynik/new">Add New Result</a>
+			<a class="btn btn-primary btn-lg" href="/map">Check Map</a>
 		</div>
 	</header>
 
@@ -25,19 +26,20 @@
 				<div class="thumbnail">
 					<div class="caption">
 						<div>
-						<li>Gral: <%= wyniki.ktoG %></li>
-						<li>Dzis gre: <%= wyniki.wygral %></li>
-						<li>Gralem dzis  <%= wyniki.stronnictwo %></li>
-						<li>Wersja gry:  <%= wyniki.wersja %></li>
-						<li>Baza byla na:  <%= wyniki.base %></li>
-						<li>Byla runda:  <%= wyniki.round %></li>
-						<li>Znacznik rebeli byl na: <%= wyniki.token %></li>
+							<li>Player 1: <%= wyniki.ktoG %></li>
+							<li>Player 2: <%= wyniki.kto %></li>
+							<li>I played:  <%= wyniki.stronnictwo %></li>
+							<li>My oponennt played:  <%= wyniki.opponent%></li>
+							<li>Winner: <%= wyniki.wygral %></li>
+							<li>Rebel Base start system:  <%= wyniki.base %></li>
+							<li>Round:  <%= wyniki.round %></li>
+							<li>Rebel marker: <%= wyniki.token %></li>
 					</div>
 				</div>
 					<p>
 						<a href="/wynik/<%=wyniki._id %>" class="btn btn-primary">More Info</a>
 					</p>
-			</div>
+		</div>
 		</div>
 		<%}); %>
 	</div>

@@ -13,13 +13,14 @@
 		<div class='col-md-9'>
 			<div class='thumbnail'>
 					<div>
-						<li>Gral: <%= wynik.ktoG %></li>
-						<li>Dzis gre: <%= wynik.wygral %></li>
-						<li>Gralem dzis  <%= wynik.stronnictwo %></li>
-						<li>Wersja gry:  <%= wynik.wersja %></li>
-						<li>Baza byla na:  <%= wynik.base %></li>
-						<li>Byla runda:  <%= wynik.round %></li>
-						<li>Znacznik rebeli byl na: <%= wynik.token %></li>
+						<li>Player 1: <%= wynik.ktoG %></li>
+						<li>Player 2: <%= wynik.kto %></li>
+						<li>I played:  <%= wynik.stronnictwo %></li>
+						<li>My oponennt played:  <%= wynik.opponent%></li>
+						<li>Winner: <%= wynik.wygral %></li>
+						<li>Rebel Base start system:  <%= wynik.base %></li>
+						<li>Round:  <%= wynik.round %></li>
+						<li>Rebel marker: <%= wynik.token %></li>
 					</div>
 
 				<p><em>Submitted By <%=wynik.author.username%></em></p>

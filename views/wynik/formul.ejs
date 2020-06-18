@@ -1,38 +1,35 @@
 <%- include ("../partials/header") %>
 <form action="/wynik" method="POST">
-    <p>Kto?</p>
+    <p>Logged Player</p>
 	<select name="wynik[ktoG]" onchange="getVal(ktoh)">
+		<option value="logged user" >Logged user</option>
+    </select>
+    <p>Opponent?</p>
+    <select name="wynik[kto]" onchange="getVal(ktoh)">
+<!-- tu trzeba bedzie zrobić petle przez wszystkich urzytkownikow z bazy danych po usernamie -->
 		<option value="kozi" >Kozi</option>
 		<option value="fulb" >Ful</option>
 	</select>
 
-
-    <p>Wygraleś?</p>
-	<select  name="wynik[wygral]" onchange="getVal(win)">
-		<option value="Wygralem" >Wygralem xD</option>
-		<option value="Przegralem" >Przegralem xD</option>
-		(...)
-	</select>
-
-
-
-    <p>Kim Graleś?</p>
+    <p>Chose your side?</p>
 	<select name="wynik[stronnictwo]" onchange="getVal(kim)">
-		<option>Rebelia</option>
-		<option>Imperium</option>
+		<option value="Rebels" >Rebels</option>
+		<option alue="Empire">Empire</option>
+    </select>
+    <p>Chose oponennt side?</p>
+	<select name="wynik[opponent]" onchange="getVal(kim)">
+		<option value="Rebels">Rebels</option>
+		<option value="Empire">Empire</option>
 	</select>
 
 
+    <p>Today game win?</p>
+	<select  name="wynik[wygral]" onchange="getVal(win)">
+		<option value="Victory" >Victory </option>
+		<option value="Loos" >Loos </option>
+    </select>
 
- <p>Grales z Dodatkiem czy nie?</p>
-	<select name="wynik[wersja]" onchange="getVal(rozszerz)">
-		<option>Rozszerzona</option>
-		<option>Podstawowa</option>
-	</select>
-
-
-
-    <p>W jakim ukladzie byla baza Rebeli?</p>
+    <p>Where was start location of Rebel Base ?</p>
 	<select name="wynik[base]" onchange="getVal(baza)">
         <option>Alderaan</option>
         <option>Bespin</option>
@@ -71,43 +68,7 @@
 
 
 
-<!--
-    <p>Jaśli baza była przeniesiona,zaznacz z Ctrl w jakich ukladach? </p>
-	<select  name="zmiana" multiple onchange="baza2()">
-        <option>Alderaan</option>
-        <option>Bespin</option>
-        <option>Bothawui</option>
-        <option>Cato Neimoidia</option>
-        <option>Corellia</option>
-        <option>Coruscant</option>
-        <option>Dagobah</option>
-        <option>Dantooine</option>
-        <option>Dathomir</option>
-        <option>Endor</option>
-        <option>Felucia</option>
-        <option>Geonosis</option>
-        <option>Hoth</option>
-        <option>Ilum</option>
-        <option>Kashyyyk</option>
-        <option>Kessel</option>
-        <option>Malastare</option>
-        <option>Mandalore</option>
-        <option>Mon Calamari</option>
-        <option>Mustafar</option>
-        <option>Mygeeto</option>
-        <option>Naboo</option>
-        <option>Nal Hutt</option>
-        <option>Ord Mantell</option>
-        <option>Rodia</option>
-        <option>Ryloth</option>
-        <option>Sullust</option>
-        <option>Tatooine</option>
-        <option>Toydaria</option>
-        <option>Utapau</option>
-        <option>Yavin</option>
-	</select> -->
-
- <p>Która była runda?</p>
+ <p>Where was the Runde marker?</p>
 	<select name="wynik[round]" onchange="getVal(runda)">
 		<option>1</option>
 		<option>2</option>
@@ -128,7 +89,7 @@
 
 
 
- <p>Gdzie byl znacznik Rebeli?</p>
+ <p>Where was the Rebel Marker?</p>
 	<select name="wynik[token]" onchange="getVal(znacznik)" >
 		<option>1</option>
 		<option>2</option>
@@ -147,12 +108,12 @@
 		<option>14</option>
 	</select>
 
-	<button type="submit" id="button">Zatwierdz</button>
+	<button type="submit" id="button">Submit</button>
 </form>
 
 
-<p><a href="/">wroc do strony glownej</a></p>
-<p><a href="/wynik">zobacz wyniki</a></p>
+<p><a href="/">Back to main page</a></p>
+<p><a href="/wynik">back to score page</a></p>
 
 
 	<script>

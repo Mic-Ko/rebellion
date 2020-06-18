@@ -5,78 +5,37 @@
 
 
 <form action="/wynik/<%=wynik._id%>?_method=PUT" method="POST">
-       <p>Kto?</p>
-	<select name="wyniki[ktoG]" onchange="getVal(ktoh)">
+    <p>Logged Player</p>
+	<select name="wynik[ktoG]" onchange="getVal(ktoh)">
+		<option value="kozi" >Logged user</option>
+    </select>
+    <p>Opponent?</p>
+    <select name="wynik[kto]" onchange="getVal(ktoh)">
+<!-- tu trzeba bedzie zrobić petle przez wszystkich urzytkownikow z bazy danych po usernamie -->
 		<option value="kozi" >Kozi</option>
 		<option value="fulb" >Ful</option>
 	</select>
 
-
-    <p>Wygraleś?</p>
-
-<select value="<%= wynik.wygral %>" required>
-     <option value="Wygralem">Wygralem xD</option>
-     <option value="Przegralem">Przegralem xD</option>
-</select>	
-	
-
-
-    <p>Kim Graleś?</p>
-	<select name="wyniki[stronnictwo]" onchange="getVal(kim)">
-		<option>Rebelia</option>
-		<option>Imperium</option>
+    <p>Chose your side?</p>
+	<select name="wynik[stronnictwo]" onchange="getVal(kim)">
+		<option>Rebels</option>
+		<option>Empire</option>
+    </select>
+    <p>Chose oponennt side?</p>
+	<select name="wynik[opponent]" onchange="getVal(kim)">
+		<option>Rebels</option>
+		<option>Empire</option>
 	</select>
 
 
+    <p>Today game win?</p>
+	<select  name="wynik[wygral]" onchange="getVal(win)">
+		<option value="Wygralem" >victory </option>
+		<option value="Przegralem" >Loos </option>
+    </select>
 
- <p>Grales z Dodatkiem czy nie?</p>
-	<select name="wyniki[wersja]" onchange="getVal(rozszerz)">
-		<option>Rozszerzona</option>
-		<option>Podstawowa</option>
-	</select>
-
-
-
-    <p>W jakim ukladzie byla baza Rebeli?</p>
-	<select name="wyniki[base]" onchange="getVal(baza)" value="<%=wynik.base%>">
-        <option>Alderaan</option>
-        <option>Bespin</option>
-        <option>Bothawui</option>
-        <option>Cato Neimoidia</option>
-        <option>Corellia</option>
-        <option>Coruscant</option>
-        <option>Dagobah</option>
-        <option>Dantooine</option>
-        <option>Dathomir</option>
-        <option>Endor</option>
-        <option>Felucia</option>
-        <option>Geonosis</option>
-        <option>Hoth</option>
-        <option value="<%=wynik.base%>">Ilum</option>
-        <option>Kashyyyk</option>
-        <option>Kessel</option>
-        <option>Malastare</option>
-        <option>Mandalore</option>
-        <option>Mon Calamari</option>
-        <option>Mustafar</option>
-        <option>Mygeeto</option>
-        <option>Naboo</option>
-        <option>Nal Hutt</option>
-        <option>Ord Mantell</option>
-        <option>Rodia</option>
-        <option>Ryloth</option>
-        <option>Sullust</option>
-        <option>Tatooine</option>
-        <option>Toydaria</option>
-        <option>Utapau</option>
-        <option>Yavin</option>
-	</select>
-
-
-
-<!-- 
-    <p>Jaśli baza była przeniesiona,zaznacz z Ctrl w jakich ukladach? </p>
-	<select  name="zmiana" multiple onchange="baza2()">
+    <p>Where was start location of Rebel Base ?</p>
+	<select name="wynik[base]" onchange="getVal(baza)">
         <option>Alderaan</option>
         <option>Bespin</option>
         <option>Bothawui</option>
@@ -104,14 +63,18 @@
         <option>Rodia</option>
         <option>Ryloth</option>
         <option>Sullust</option>
+        <option>Saleucami</option>
         <option>Tatooine</option>
         <option>Toydaria</option>
         <option>Utapau</option>
         <option>Yavin</option>
-	</select> -->
 
- <p>Która była runda?</p>
-	<select name="wyniki[round]" onchange="getVal(runda)">
+	</select>
+
+
+
+ <p>Where was the Runde marker?</p>
+	<select name="wynik[round]" onchange="getVal(runda)">
 		<option>1</option>
 		<option>2</option>
 		<option>3</option>
@@ -131,8 +94,8 @@
 
 
 
- <p>Gdzie byl znacznik Rebeli?</p>
-	<select name="wyniki[token]" onchange="getVal(znacznik)" >
+ <p>Where was the Rebel Marker?</p>
+	<select name="wynik[token]" onchange="getVal(znacznik)" >
 		<option>1</option>
 		<option>2</option>
 		<option>3</option>
@@ -149,15 +112,16 @@
 		<option>13</option>
 		<option>14</option>
 	</select>
-	
-	<button type="submit" id="button">Zatwierdz</button>
+
+	<button type="submit" id="button">Submit</button>
+</form>
 </form>
 
 
 
 <p><a href="/">wroc do strony glownej</a></p>
 <p><a href="/wynik">zobacz wyniki</a></p>
- 
+
 
 	<script>
 function getVal(y){

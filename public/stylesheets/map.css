@@ -96,7 +96,10 @@ html {
   li.active a, a:hover, a:active {
     color: #e5e5e5;
   }
-
+  .btn-sm {
+    position: absolute;
+    font-size: 10px;
+  }
   .centered {
     position: absolute;
     top: 50%;

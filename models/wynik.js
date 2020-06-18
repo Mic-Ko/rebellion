@@ -4,9 +4,10 @@ var mongoose= require("mongoose");
 // schemat nowo powstalej bazy danych
 	var wynikSchema = new mongoose.Schema({
 		ktoG:String,
+		kto:String,
 		wygral:String,
 		stronnictwo:String,
-		wersja:String,
+		opponent:String,
 		base:String,
 		round:Number,
 		token:Number,

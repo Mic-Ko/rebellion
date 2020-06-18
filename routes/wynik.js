@@ -19,7 +19,7 @@ router.get("/", function(req, res){
 
 // odsylacz do formy do wypelniania wynikoiw
 router.get("/new", middleware.isLoggedIn, function(req,res){
-	// res.render odda uzytkownikowi plik ktรณry wpiszemy
+	// res.render odda uzytkownikowi plik ktory wpiszemy
 	res.render("wynik/formul")
 });
 
@@ -42,9 +42,10 @@ router.get("/:id", function(req, res){
 // wysyła do bazy danych co chcemy i wraca na strone z wynikami
 router.post("/", middleware.isLoggedIn, function(req, res){
 	var ktoG= req.body.wynik.ktoG;
+	var kto= req.body.wynik.kto;
 	var wygral= req.body.wynik.wygral;
 	var stronnictwo= req.body.wynik.stronnictwo;
-	var wersja= req.body.wynik.wersja;
+	var opponent= req.body.wynik.opponent;
 	var base= req.body.wynik.base;
 	var round= req.body.wynik.round;
 	var token= req.body.wynik.token;
@@ -52,7 +53,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 		id:req.user._id,
 		username: req.user.username
 	}
-	var newWynik = {ktoG: ktoG, wygral: wygral, stronnictwo:stronnictwo, wersja:wersja, base:base, round:round, token:token, author: author}
+	var newWynik = {ktoG: ktoG, kto:kto, wygral: wygral, stronnictwo:stronnictwo, opponent:opponent, base:base, round:round, token:token, author: author}
 	Wynik.create(newWynik, function(err, newlyCreated )
 		{if(err){
 			console.log(err)
