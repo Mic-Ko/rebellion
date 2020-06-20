@@ -22,7 +22,8 @@
 						<li>Round:  <%= wynik.round %></li>
 						<li>Rebel marker: <%= wynik.token %></li>
 					</div>
-
+					<!-- <% console.log(currentUser) %>
+					<% console.log(wynik.author) %> -->
 				<p><em>Submitted By <%=wynik.author.username%></em></p>
 				<% if(currentUser && wynik.author.id.equals(currentUser._id)){%>
 <a class="ui orange basic button" href="/wynik/<%=wynik._id%>/edit">Edit</a>

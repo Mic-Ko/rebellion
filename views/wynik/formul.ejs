@@ -1,14 +1,19 @@
 <%- include ("../partials/header") %>
 <form action="/wynik" method="POST">
-    <p>Logged Player</p>
-	 <select name="wynik[ktoG]" onchange="getVal(ktoh)">
+    <p class="hidden">Logged Player</p>
+	 <select class="hidden" name="wynik[ktoG]" onchange="getVal(ktoh)">
 		<option value="logged user">current user </option>
-    </select>
+	</select>
+	 <%= console.log(currentUser) %>
     <p>Opponent?</p>
     <select name="wynik[kto]" onchange="getVal(ktoh)">
 <!-- tu trzeba bedzie zrobić petle przez wszystkich urzytkownikow z bazy danych po usernamie -->
-		<option value="kozi" >Kozi</option>
-		<option value="fulb" >Ful</option>
+	<% user.forEach(function(users){ %>
+	<% if (users.username===currentUser.username) { %>
+		<option class="hidden"><%= users.username %></option>
+	 <% } else { %>
+		<option><%= users.username %></option>
+	 <% }}); %>
 	</select>
 
     <p>Chose your side?</p>

@@ -18,11 +18,33 @@ router.get("/", function(req, res){
 });
 
 
+
+
+
 // odsylacz do formy do wypelniania wynikoiw
 router.get("/new", middleware.isLoggedIn, function(req,res){
-	// res.render odda uzytkownikowi plik ktory wpiszemy
-	res.render("wynik/formul")
+	User.find({}, function(err, alluser){
+		if(err){
+			console.log(err);
+		}
+		else{
+		res.render('wynik/formul', {user: alluser});
+		}
+	})
 });
+
+
+
+
+
+
+
+
+// // odsylacz do formy do wypelniania wynikoiw
+// router.get("/new", middleware.isLoggedIn, function(req,res){
+// 	// res.render odda uzytkownikowi plik ktory wpiszemy
+// 	res.render("wynik/formul")
+// });
 
 
 router.get("/:id", function(req, res){

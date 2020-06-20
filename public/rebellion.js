@@ -175,3 +175,26 @@
 // //   var popup = document.getElementById('myPopup');
 // //   popup.classList.toggle('show');
 // // }
+
+
+
+// **************************************************
+// funkcja do chowania aktualnie zalogowanego użytkownika
+// **************************************************
+
+var ktoG = [
+    { _id: 5eb71285d7c20510988934d6, username: 'dupa', __v: 0 },
+    { _id: 5ee92d24655fdf3984a1a4ab, username: 'dupa1', __v: 0 },
+    { _id: 5eebd16b21fa610720c1ce75, username: 'michal', __v: 0 },
+    { _id: 5eebe7a907e8753b74a189a5, username: 'kozi', __v: 0 },
+    { _id: 5eebe7b307e8753b74a189a6, username: 'romek', __v: 0 },
+    { _id: 5eebe7c007e8753b74a189a7, username: 'smerfy', __v: 0 },
+    { _id: 5eedfeb83ad15e1f307522f6, username: 'czesio', __v: 0 },
+    { _id: 5eedfec13ad15e1f307522f7, username: 'zenek', __v: 0 },
+    { _id: 5eedfecc3ad15e1f307522f8, username: 'krysia', __v: 0 }
+  ]
+
+
+func
+
+
