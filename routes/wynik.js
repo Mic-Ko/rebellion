@@ -97,9 +97,17 @@ router.get("/:id/edit", middleware.checkWynikOwnership, function(req, res){
 		if(err){
 			res.redirect("/wynik")
 		}else{
-			res.render("wynik/edit", {wynik: foundWynik});
+			User.find({}, function(err, alluser){
+				if(err){
+					console.log(err);
+				}
+				else{
+				res.render('wynik/edit', {wynik: foundWynik, user: alluser});
+				}
+			});
 		}
 	});
+
 });
 
 // matedoa na uaktualnienie posta Blog.findByIdAndUpdate(id, newData, callback)

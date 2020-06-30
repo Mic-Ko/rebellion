@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/map.css">
+</head>
+<body>
+    <% var star = wynik %>
+    <%  var baseL= [] %>
+    <%  function baseList(baza) { %>
+        <% for (let i=0; i<baza.length; i+=1){ %>
+            <% baseL.push(baza[i].base); %>
+            <% }return baseL;} %>
+            <% baseList(star) %>
+
+    <% function location(array, value){ %>
+    <% return array.filter((v) => (v === value)).length;} %>
+
+    <% var ilum = location(baseL, "Ilum") %>
+    <% var bespin = location(baseL, "Bespin") %>
+    <% var mon = location(baseL, "Mon Calamari") %>
+    <% var felucia = location(baseL, "Felucia") %>
+    <% var yavin = location(baseL, "Yavin") %>
+    <% var saleucami = location(baseL, "Saleucami") %>
+    <% var dathomir = location(baseL, "Dathomir") %>
+    <% var dantooine = location(baseL, "Dantooine") %>
+    <% var mygeeto = location(baseL, "Mygeeto") %>
+    <% var ord = location(baseL, "Ord Mantell") %>
+    <% var mandalore = location(baseL, "Mandalore") %>
+    <% var kashyyk = location(baseL, "Kashyyk") %>
+    <% var toydaria = location(baseL, "Toydaria") %>
+    <% var kessel = location(baseL, "Kessel") %>
+    <% var nal = location(baseL, "Nal Hutta") %>
+    <% var botha = location(baseL, "Bothawui") %>
+    <% var malastare = location(baseL, "Malestere") %>
+    <% var cato = location(baseL, "Cato Neimodia") %>
+    <% var corellia = location(baseL, "Corellia") %>
+    <% var sullust = location(baseL, "Sullust") %>
+    <% var naboo = location(baseL, "Naboo") %>
+    <% var rodia = location(baseL, "Rodia") %>
+    <% var tatooine = location(baseL, "Tatooine") %>
+    <% var ryloth = location(baseL, "Ryloth") %>
+    <% var geonosis = location(baseL, "Geonosis") %>
+    <% var utapau = location(baseL, "Utapau") %>
+    <% var dagobah = location(baseL, "Dagobah") %>
+    <% var mustafar = location(baseL, "Mustafar") %>
+    <% var hoth = location(baseL, "Hoth") %>
+    <% var endor = location(baseL, "Endor") %>
+    <% var alderaan = location(baseL, "Alderaan") %>
+
+
+<!-- <div class="all">
+    <div class="map"> -->
+<div class="distribution-map">
+    <img src="/img/map.png">
+        <a class="btn btn-danger btn-sm" href="/wynik" style="top:3%;left:0.5%">Back to results</a>
+        <button class="map-point top" style="top:7%;left:15%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Mon Calamari</h2>
+                    <p>The Rebel base was hidden on Mon Calamari ocean depths <%= mon %> timse </p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:30%;left:20%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Felucia</h2>
+                    <p>The Rebel base was hidden on Felucia colorful jungle <%= felucia %> timse</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:40%;left:12%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Yavin</h2>
+                    <p>The Rebel base was hidden on Yavin moons <%= yavin %> timse</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:60%;left:22%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Dathomir</h2>
+                    <p>The Rebel base was hidden on Rancor home planet <%= dathomir %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:66%;left:9%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Dantooine</h2>
+                    <p>The Rebel base was hidden on Outer Rim Planet Dantooine <%= dantooine %> times </p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:74%;left:17%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Mygeeto</h2>
+                    <p>With Helping money of The InterGalactic Banking Clan The Rebel base was hidden on Mygeeto <%= mygeeto %> times </p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point bottom" style="top:92%;left:23%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Ilum</h2>
+                    <p>The Rebel base was hidden on ice dwarf planet Ilum <%= ilum %> times. </p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:83%;left:31%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Ord Mantell</h2>
+                    <p>The Rebel base location was betrayed by Black Sun members <%= ilum %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:65%;left:34%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Mandalore</h2>
+                    <p>The Rebel base was hidden on Mandalore <%= mandalore %> times.  </p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:30%;left:30%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Saleucami</h2>
+                    <p>The Rebel base was hidden on fertile Saleucami craters <%= saleucami %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point top" style="top:8%;left:32%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Kessel</h2>
+                    <p>The Rebel base was hidden on Kessel asteroid <%= kessel %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:33%;left:40%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Toydaria</h2>
+                    <p>The Rebel base was hidden on foggy swamps of Toydaria <%= toydaria%> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:52%;left:43%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Kashyyk</h2>
+                    <p>The Rebel base was hidden on forever allay Kashyyk thrught the Wroshyr tree <%= kashyyk %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:77%;left:42%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Alderaan</h2>
+                    <p>The Rebel base was hidden on Alderaan <%= alderaan %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point bottom" style="top:90%;left:54%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Coruscant</h2>
+                    <p>Long life the Emperore!!</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:68%;left:58%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Cato Neimodia</h2>
+                    <p>The Rebel base was hidden on Cato Neimodia <%= cato %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:51%;left:55%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Malestere</h2>
+                    <p>The Rebel base was hidden on malastare <%= malastare %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:20%;left:54%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Bothawui</h2>
+                    <p>The Rebel base was hidden on Bothawui <%= botha %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point top" style="top:8%;left:43%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Nal Hutta</h2>
+                    <p>The Rebel base was hidden on Outer Rim Nal Hutta system <%= nal %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point top" style="top:4%;left:68%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Tatooine</h2>
+                    <p>The Rebel base was hidden under two suns of Tatooine desert  <%= tatooine %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:25%;left:63%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Rodia</h2>
+                    <p>The Rebel base was hidden on Rodia swampy jungle <%= rodia %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:39%;left:70%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Naboo</h2>
+                    <p>The Emperore don't expect Rebel base on his father land. The Rebel base was hidden on Naboo  <%= naboo %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:67%;left:71%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Sullust</h2>
+                    <p>The Rebel base was hidden on Sullust lawa planet <%=  %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:87%;left:67%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Corellia</h2>
+                    <p>How it possible that, The Rebel base was hidden so close  <%= corellia  %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point bottom" style="top:93%;left:83%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Endor</h2>
+                    <p>The Rebel base was hidden on Endore forest moon <%= endor%> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:75%;left:84%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Bespin</h2>
+                    <p>The Rebel base was hidden on Bespin clouds City<%= bespin %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point right" style="top:72%;left:94%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Hoth</h2>
+                    <p>The Rebel base was hidden on ice desert of Hoth <%= hoth %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point right" style="top:54%;left:90%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Mustafar</h2>
+                    <p>The Rebel base was hidden on small vulcanic planet Mustafar  <%= mustafar %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:54%;left:79%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Dagobah</h2>
+                    <p>The Rebel base was hidden on Dagobah <%= dagobah %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point right" style="top:30%;left:91%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Utapau</h2>
+                    <p><img src="https://media3.giphy.com/media/Nx0rz3jtxtEre/giphy.gif?cid=ecf05e4738c298ce97080a204f8ef35f8b3cec8244867c0c&rid=giphy.gif"> <%= utapau %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point" style="top:21%;left:79%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Geonosis</h2>
+                    <p>The Rebel base was hidden on Geonosis desert  <%= geonosis  %> times</p>
+                </div>
+            </div>
+        </button>
+        <button class="map-point top right" style="top:5%;left:87%">
+            <div class="content">
+                <div class="centered-y">
+                    <h2>Ryloth</h2>
+                    <p>The Rebel base was hidden on allay Ryloth  <%= ryloth %> times</p>
+                </div>
+            </div>
+        </button>
+    </div>
+
+
+<script src="rebellion.js"></script>
+
+</body>
+</html>

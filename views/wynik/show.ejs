@@ -17,13 +17,11 @@
 						<li>Player 2: <%= wynik.kto %></li>
 						<li>I played:  <%= wynik.stronnictwo %></li>
 						<li>My oponennt played:  <%= wynik.opponent%></li>
-						<li>Winner: <%= wynik.wygral %></li>
+						<li>Today i: <%= wynik.wygral %></li>
 						<li>Rebel Base start system:  <%= wynik.base %></li>
 						<li>Round:  <%= wynik.round %></li>
 						<li>Rebel marker: <%= wynik.token %></li>
 					</div>
-					<!-- <% console.log(currentUser) %>
-					<% console.log(wynik.author) %> -->
 				<p><em>Submitted By <%=wynik.author.username%></em></p>
 				<% if(currentUser && wynik.author.id.equals(currentUser._id)){%>
 <a class="ui orange basic button" href="/wynik/<%=wynik._id%>/edit">Edit</a>

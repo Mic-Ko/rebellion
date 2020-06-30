@@ -1,12 +1,11 @@
 <%- include ("../partials/header") %>
-<form action="/wynik" method="POST">
+<form onsubmit="return isValidForm();" action="/wynik" method="POST">
     <p class="hidden">Logged Player</p>
-	 <select class="hidden" name="wynik[ktoG]" onchange="getVal(ktoh)">
+	 <select class="hidden" name="wynik[ktoG]" >
 		<option value="logged user">current user </option>
 	</select>
-	 <%= console.log(currentUser) %>
     <p>Opponent?</p>
-    <select name="wynik[kto]" onchange="getVal(ktoh)">
+    <select name="wynik[kto]" >
 <!-- tu trzeba bedzie zrobić petle przez wszystkich urzytkownikow z bazy danych po usernamie -->
 	<% user.forEach(function(users){ %>
 	<% if (users.username===currentUser.username) { %>
@@ -17,103 +16,98 @@
 	</select>
 
     <p>Chose your side?</p>
-	<select name="wynik[stronnictwo]" onchange="getVal(kim)">
-		<option value="Rebels" >Rebels</option>
-		<option alue="Empire">Empire</option>
+	<select  class="stR" name="wynik[stronnictwo]" onchange="val()" >
+		<option  value="Rebels" >Rebels</option>
+		<option  value="Empire" >Empire</option>
     </select>
     <p>Chose oponennt side?</p>
-	<select name="wynik[opponent]" onchange="getVal(kim)">
-		<option value="Rebels">Rebels</option>
-		<option value="Empire">Empire</option>
+	<select class="op" name="wynik[opponent]">
+		<option class="opR" value="Rebels">Rebels</option>
+		<option class="opE" value="Empire">Empire</option>
 	</select>
 
 
     <p>Today game win?</p>
-	<select  name="wynik[wygral]" onchange="getVal(win)">
-		<option value="Victory" >Victory </option>
+	<select  name="wynik[wygral]" >
+		<option value="Win" >Win</option>
 		<option value="Loos" >Loos </option>
     </select>
 
     <p>Where was start location of Rebel Base ?</p>
-	<select name="wynik[base]" onchange="getVal(baza)">
-        <option>Alderaan</option>
-        <option>Bespin</option>
-        <option>Bothawui</option>
-        <option>Cato Neimoidia</option>
-        <option>Corellia</option>
-        <option>Coruscant</option>
-        <option>Dagobah</option>
-        <option>Dantooine</option>
-        <option>Dathomir</option>
-        <option>Endor</option>
-        <option>Felucia</option>
-        <option>Geonosis</option>
-        <option>Hoth</option>
-        <option>Ilum</option>
-        <option>Kashyyyk</option>
-        <option>Kessel</option>
-        <option>Malastare</option>
-        <option>Mandalore</option>
-        <option>Mon Calamari</option>
-        <option>Mustafar</option>
-        <option>Mygeeto</option>
-        <option>Naboo</option>
-        <option>Nal Hutt</option>
-        <option>Ord Mantell</option>
-        <option>Rodia</option>
-        <option>Ryloth</option>
-        <option>Sullust</option>
-        <option>Saleucami</option>
-        <option>Tatooine</option>
-        <option>Toydaria</option>
-        <option>Utapau</option>
-        <option>Yavin</option>
+	<select name="wynik[base]" >
+        <option value="Alderaan"	 	>Alderaan</option>
+		<option value="Bespin"			>Bespin</option>
+        <option value="Bothawui"		>Bothawui</option>
+        <option value="Cato Neimoidia"  >Cato Neimoidia</option>
+        <option value="Dagobah" 		>Dagobah</option>
+        <option value="Corellia" 		>Corellia</option>
+        <option value="Dantooine" 		>Dantooine</option>
+        <option value="Dathomir" 		>Dathomir</option>
+        <option value="Endor" 			>Endor</option>
+        <option value="Felucia" 		>Felucia</option>
+        <option value="Geonosis" 		>Geonosis</option>
+        <option value="Hoth" 			>Hoth</option>
+        <option value="Ilum" 			>Ilum</option>
+        <option value="Kashyyyk" 		>Kashyyyk</option>
+        <option value="Kessel" 			>Kessel</option>
+        <option value="Malastare" 		>Malastare</option>
+        <option value="Mandalore" 		>Mandalore</option>
+        <option value="Mon Calamari"	>Mon Calamari</option>
+        <option value="Mustafar" 		>Mustafar</option>
+        <option value="Mygeeto" 		>Mygeeto</option>
+        <option value="Naboo" 			>Naboo</option>
+        <option value="Nal Hutt" 		>Nal Hutt</option>
+        <option value="Ord Mantell" 	>Ord Mantell</option>
+        <option value="Rodia" 			>Rodia</option>
+        <option value="Ryloth" 			>Ryloth</option>
+        <option value="Sullust" 		>Sullust</option>
+        <option value="Saleucami" 		>Saleucami</option>
+        <option value="Tatooine" 		>Tatooine</option>
+        <option value="Toydaria" 		>Toydaria</option>
+        <option value="Utapau" 			>Utapau</option>
+        <option value="Yavin" 			>Yavin</option>
+</select>
 
+
+	<p>Where was the Rebel token?</p>
+	<select class="tok" name="wynik[token]" onchange="roundValid()">
+		<option value="1" > 1 </option>
+		<option value="2" > 2 </option>
+		<option value="3" > 3 </option>
+		<option value="4" > 4 </option>
+		<option value="5" > 5 </option>
+		<option value="6" > 6 </option>
+		<option value="7" > 7 </option>
+		<option value="8" > 8 </option>
+		<option value="9" > 9 </option>
+		<option value="11" > 10</option>
+		<option value="11" > 11</option>
+		<option value="12" > 12</option>
+		<option value="13" > 13</option>
+		<option value="14" > 14</option>
 	</select>
 
 
 
- <p>Where was the Runde marker?</p>
-	<select name="wynik[round]" onchange="getVal(runda)">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-		<option>11</option>
-		<option>12</option>
-		<option>13</option>
-		<option>14</option>
+	<p>Where was the Round marker?</p>
+	<select class="round" name="wynik[round]" onchange="roundValid()">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+		<option value="13">13</option>
+		<option value="14">14</option>
 	</select>
 
-
-
- <p>Where was the Rebel Marker?</p>
-	<select name="wynik[token]" onchange="getVal(znacznik)" >
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-		<option>11</option>
-		<option>12</option>
-		<option>13</option>
-		<option>14</option>
-	</select>
-
-	<button type="submit" id="button">Submit</button>
+	<button type="submit" id="button" >Submit</button>
 </form>
 
 
@@ -121,9 +115,4 @@
 <p><a href="/wynik">back to score page</a></p>
 
 
-	<script>
-function getVal(y){
-return y.value
-}
-	</script>
 <%- include("../partials/footer") %>

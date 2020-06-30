@@ -1,131 +1,119 @@
 <%- include ("../partials/header") %>
-<h1>
-	edit page
-</h1>
-
-
-<form action="/wynik/<%=wynik._id%>?_method=PUT" method="POST">
-    <p>Logged Player</p>
-	<select name="wynik[ktoG]" onchange="getVal(ktoh)">
-		<option value="kozi" >Logged user</option>
-    </select>
+<form onsubmit="return isValidForm();" action="/wynik/<%=wynik._id%>?_method=PUT" method="POST">
+    <p class="hidden">Logged Player</p>
+	 <select class="hidden" name="wynik[ktoG]" >
+		<option value="logged user">current user </option>
+	</select>
     <p>Opponent?</p>
-    <select name="wynik[kto]" onchange="getVal(ktoh)">
+    <select name="wynik[kto]" >
 <!-- tu trzeba bedzie zrobić petle przez wszystkich urzytkownikow z bazy danych po usernamie -->
-		<option value="kozi" >Kozi</option>
-		<option value="fulb" >Ful</option>
+	<% user.forEach(function(users){ %>
+	<% if (users.username===currentUser.username) { %>
+		<option class="hidden"><%= users.username %></option>
+	 <% } else { %>
+		<option><%= users.username %></option>
+	 <% }}); %>
 	</select>
 
     <p>Chose your side?</p>
-	<select name="wynik[stronnictwo]" onchange="getVal(kim)">
-		<option>Rebels</option>
-		<option>Empire</option>
+	<select  class="stR" name="wynik[stronnictwo]" onchange="val()" >
+		<option value="Rebels" <%- wynik.stronnictwo=="Rebels" ? "selected" : "" %>  >Rebels</option>
+		<option value="Empire" <%- wynik.stronnictwo=="Empire" ? "selected" : "" %>  >Empire</option>
     </select>
     <p>Chose oponennt side?</p>
-	<select name="wynik[opponent]" onchange="getVal(kim)">
-		<option>Rebels</option>
-		<option>Empire</option>
+	<select class="op" name="wynik[opponent]">
+		<option value="Rebels" class="opR" <%- wynik.opponent=="Rebels" ? "selected" : "" %>  >Rebels</option>
+		<option value="Empire" class="opE" <%- wynik.opponent=="Empire" ? "selected" : "" %>  >Empire</option>
 	</select>
 
 
     <p>Today game win?</p>
-	<select  name="wynik[wygral]" onchange="getVal(win)">
-		<option value="Wygralem" >victory </option>
-		<option value="Przegralem" >Loos </option>
-    </select>
+	<select  name="wynik[wygral]"  >
+		<option <%- wynik.wygral=="win" ? "selected" : "" %> value="win" >Win </option>
+		<option <%- wynik.wygral=="Loos" ? "selected" : "" %> value="loos" >Loss </option>
+	</select>
 
     <p>Where was start location of Rebel Base ?</p>
-	<select name="wynik[base]" onchange="getVal(baza)">
-        <option>Alderaan</option>
-        <option>Bespin</option>
-        <option>Bothawui</option>
-        <option>Cato Neimoidia</option>
-        <option>Corellia</option>
-        <option>Coruscant</option>
-        <option>Dagobah</option>
-        <option>Dantooine</option>
-        <option>Dathomir</option>
-        <option>Endor</option>
-        <option>Felucia</option>
-        <option>Geonosis</option>
-        <option>Hoth</option>
-        <option>Ilum</option>
-        <option>Kashyyyk</option>
-        <option>Kessel</option>
-        <option>Malastare</option>
-        <option>Mandalore</option>
-        <option>Mon Calamari</option>
-        <option>Mustafar</option>
-        <option>Mygeeto</option>
-        <option>Naboo</option>
-        <option>Nal Hutt</option>
-        <option>Ord Mantell</option>
-        <option>Rodia</option>
-        <option>Ryloth</option>
-        <option>Sullust</option>
-        <option>Saleucami</option>
-        <option>Tatooine</option>
-        <option>Toydaria</option>
-        <option>Utapau</option>
-        <option>Yavin</option>
-
+	<select name="wynik[base]" >
+        <option value="Alderaan"		<%- wynik.base=="Alderaan" ? "selected" : "" %> 		>Alderaan</option>
+        <option value="Bespin"			<%- wynik.base=="Bespin" ? "selected" : "" %> 			>Bespin</option>
+        <option value="Bothawui"		<%- wynik.base=="Bothawui" ? "selected" : "" %> 		>Bothawui</option>
+        <option value="Cato Neimoidia"	<%- wynik.base=="Cato Neimoidia" ? "selected" : "" %> 	>Cato Neimoidia</option>
+        <option value="Dagobah" 		<%- wynik.base=="Dagobah" ? "selected" : "" %> 			>Dagobah</option>
+        <option value="Corellia" 		<%- wynik.base=="Corellia" ? "selected" : "" %> 		>Corellia</option>
+        <option value="Dantooine" 		<%- wynik.base=="Dantooine" ? "selected" : "" %> 		>Dantooine</option>
+        <option value="Dathomir" 		<%- wynik.base=="Dathomir" ? "selected" : "" %> 		>Dathomir</option>
+        <option value="Endor" 			<%- wynik.base=="Endor" ? "selected" : "" %> 			>Endor</option>
+        <option value="Felucia" 		<%- wynik.base=="Felucia" ? "selected" : "" %> 			>Felucia</option>
+        <option value="Geonosis" 		<%- wynik.base=="Geonosis" ? "selected" : "" %> 		>Geonosis</option>
+        <option value="Hoth" 			<%- wynik.base=="Hoth" ? "selected" : "" %> 			>Hoth</option>
+        <option value="Ilum" 			<%- wynik.base=="Ilum" ? "selected" : "" %> 			>Ilum</option>
+        <option value="Kashyyyk" 		<%- wynik.base=="Kashyyyk" ? "selected" : "" %> 		>Kashyyyk</option>
+        <option value="Kessel" 			<%- wynik.base=="Kessel" ? "selected" : "" %> 			>Kessel</option>
+        <option value="Malastare" 		<%- wynik.base=="Malastare" ? "selected" : "" %> 		>Malastare</option>
+        <option value="Mandalore" 		<%- wynik.base=="Mandalore" ? "selected" : "" %> 		>Mandalore</option>
+        <option value="Mon Calamari" 	<%- wynik.base=="Mon Calamari" ? "selected" : "" %> 	>Mon Calamari</option>
+        <option value="Mustafar" 		<%- wynik.base=="Mustafar" ? "selected" : "" %> 		>Mustafar</option>
+        <option value="Mygeeto" 		<%- wynik.base=="Mygeeto" ? "selected" : "" %> 			>Mygeeto</option>
+        <option value="Naboo" 			<%- wynik.base=="Naboo" ? "selected" : "" %> 			>Naboo</option>
+        <option value="Nal Hutt" 		<%- wynik.base=="Nal Hutt" ? "selected" : "" %> 		>Nal Hutt</option>
+        <option value="Ord Mantell" 	<%- wynik.base=="Ord Mantell" ? "selected" : "" %> 		>Ord Mantell</option>
+        <option value="Rodia" 			<%- wynik.base=="Rodia" ? "selected" : "" %> 			>Rodia</option>
+        <option value="Ryloth" 			<%- wynik.base=="Ryloth" ? "selected" : "" %> 			>Ryloth</option>
+        <option value="Sullust" 		<%- wynik.base=="Sullust" ? "selected" : "" %>			>Sullust</option>
+        <option value="Saleucami" 		<%- wynik.base=="Saleucami" ? "selected" : "" %> 		>Saleucami</option>
+        <option value="Tatooine" 		<%- wynik.base=="Tatooine" ? "selected" : "" %>			>Tatooine</option>
+        <option value="Toydaria" 		<%- wynik.base=="Toydaria" ? "selected" : "" %> 		>Toydaria</option>
+        <option value="Utapau" 			<%- wynik.base=="Utapau" ? "selected" : "" %> 			>Utapau</option>
+        <option value="Yavin" 			<%- wynik.base=="Yavin" ? "selected" : "" %>			>Yavin</option>
 	</select>
 
-
+	<p>Where was the Rebel token?</p>
+	<select class="tok" name="wynik[token]" onchange="roundValid()">
+		<option value="1" <%- wynik.token == 1 ? "selected" : "" %>> 1</option>
+		<option value="2" <%- wynik.token == 2 ? "selected" : "" %>> 2</option>
+		<option value="3" <%- wynik.token == 3 ? "selected" : "" %>> 3</option>
+		<option value="4" <%- wynik.token == 4 ? "selected" : "" %>> 4</option>
+		<option value="5" <%- wynik.token == 5 ? "selected" : "" %>> 5</option>
+		<option value="6" <%- wynik.token == 6 ? "selected" : "" %>> 6</option>
+		<option value="7" <%- wynik.token == 7 ? "selected" : "" %>> 7</option>
+		<option value="8" <%- wynik.token == 8 ? "selected" : "" %>> 8</option>
+		<option value="9" <%- wynik.token == 9 ? "selected" : "" %>> 9</option>
+		<option value="10" <%- wynik.token == 10 ? "selected" : "" %>> 10</option>
+		<option value="11" <%- wynik.token == 11 ? "selected" : "" %>> 11</option>
+		<option value="12" <%- wynik.token == 12 ? "selected" : "" %>> 12</option>
+		<option value="13" <%- wynik.token == 13 ? "selected" : "" %>> 13</option>
+		<option value="14" <%- wynik.token == 14 ? "selected" : "" %>> 14</option>
+	</select>
 
  <p>Where was the Runde marker?</p>
-	<select name="wynik[round]" onchange="getVal(runda)">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-		<option>11</option>
-		<option>12</option>
-		<option>13</option>
-		<option>14</option>
+	<select class="round" name="wynik[round]" onchange="roundValid()">
+		<option value="1" <%- wynik.round == 1 ? "selected" : "" %>> 1</option>
+		<option value="2" <%- wynik.round == 2 ? "selected" : "" %>> 2</option>
+		<option value="3" <%- wynik.round == 3 ? "selected" : "" %>> 3</option>
+		<option value="4" <%- wynik.round == 4 ? "selected" : "" %>> 4</option>
+		<option value="5" <%- wynik.round == 5 ? "selected" : "" %>> 5</option>
+		<option value="6" <%- wynik.round == 6 ? "selected" : "" %>> 6</option>
+		<option value="7" <%- wynik.round == 7 ? "selected" : "" %>> 7</option>
+		<option value="8" <%- wynik.round == 8 ? "selected" : "" %>> 8</option>
+		<option value="9" <%- wynik.round == 9 ? "selected" : "" %>> 9</option>
+		<option value="10" <%- wynik.round == 10 ? "selected" : "" %>> 10</option>
+		<option value="11" <%- wynik.round == 11 ? "selected" : "" %>> 11</option>
+		<option value="12" <%- wynik.round == 12 ? "selected" : "" %>> 12</option>
+		<option value="13" <%- wynik.round == 13 ? "selected" : "" %>> 13</option>
+		<option value="14" <%- wynik.round == 14 ? "selected" : "" %>> 14</option>
 	</select>
 
 
 
- <p>Where was the Rebel Marker?</p>
-	<select name="wynik[token]" onchange="getVal(znacznik)" >
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-		<option>11</option>
-		<option>12</option>
-		<option>13</option>
-		<option>14</option>
-	</select>
+
 
 	<button type="submit" id="button">Submit</button>
 </form>
-</form>
 
 
+<p><a href="/">Back to main page</a></p>
+<p><a href="/wynik">back to score page</a></p>
 
-<p><a href="/">wroc do strony glownej</a></p>
-<p><a href="/wynik">zobacz wyniki</a></p>
 
-
-	<script>
-function getVal(y){
-return y.value
-}
-	</script>
 <%- include("../partials/footer") %>
