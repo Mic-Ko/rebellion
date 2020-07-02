@@ -63,7 +63,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
 		if(err){
 			res.redirect("back")
 		} else {
-			res.redirect("/campgrounds/" + req.params.id)
+			res.redirect("/wynik/" + req.params.id)
 		}
 	})
 });
@@ -75,7 +75,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 			res.redirect("back");
 		}else{
 			req.flash("Success", "Comment deleted")
-			res.redirect("/campgrounds/" + req.params.id);
+			res.redirect("/wynik/" + req.params.id);
 		}
 	});
 });

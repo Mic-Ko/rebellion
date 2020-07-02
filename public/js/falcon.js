@@ -31,17 +31,15 @@ function topFunction() {
 function val() {
   let opE = document.querySelector(".opE");
   let opR = document.querySelector(".opR");
-  let eval = document.querySelector(".stR").value;
+  let stR = document.querySelector(".stR").value;
   let op = document.querySelector(".op").value;
-  console.log(op)
-  console.log(eval)
-  if(eval == op){
+  if(stR == op){
       return false
-  }else if (eval==="Empire"){
+  }else if (stR==="Empire"){
       opE.style.display = "none";
       opR.style.display = "block"
       return true
-  }else if (eval === "Rebels"){
+  }else if (stR === "Rebels"){
       opR.style.display = "none";
       opE.style.display = "block";
       return true

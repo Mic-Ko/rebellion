@@ -112,7 +112,7 @@ router.get("/:id/edit", middleware.checkWynikOwnership, function(req, res){
 
 // matedoa na uaktualnienie posta Blog.findByIdAndUpdate(id, newData, callback)
 router.put("/:id", middleware.checkWynikOwnership, function(req, res){
-	Wynik.findByIdAndUpdate(req.params.id, req.body.wyniki, function(err, updatedBlog){
+	Wynik.findByIdAndUpdate(req.params.id, req.body.wynik, function(err, updatedBlog){
 		if(err){
 			res.redirect("/wynik")
 		}else{

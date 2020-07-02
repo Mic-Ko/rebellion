@@ -39,9 +39,10 @@ router.get("/register", function(req, res){
 
 	// sign logic
 router.post('/register', function(req, res){
-	// req.body.username
-	// req.body.password
 	var newUser = new User({username: req.body.username});
+	if(req.body.adminCode === "pass5"){
+		newUser.isAdmin = true;
+	}
 	User.register(newUser, req.body.password, function(err, user){
 		if(err){
 			req.flash("error", err.message)
