@@ -1,0 +1,19 @@
+<%- include ("../partials/header") %>
+
+
+<h1>
+	register page
+</h1>
+
+
+<form action="/register" method="POST">
+	<input type="text" name="username" placeholder='Username'>
+	<input type="password" name="password" placeholder='Password'>
+	<input type="email" name="email" placeholder='Email@gmail.com'>
+	<input type="text" name="avatar" placeholder='Avatar url'>
+	<input type="text" name="nick" placeholder='Nick/Name visable for other user'>
+	<button>
+		Sign Up
+	</button>
+</form>
+<%- include("../partials/footer") %>

@@ -33,21 +33,25 @@ function val() {
   let opR = document.querySelector(".opR");
   let stR = document.querySelector(".stR").value;
   let op = document.querySelector(".op").value;
-  if(stR == op){
-      return false
-  }else if (stR==="Empire"){
-      opE.style.display = "none";
+  if (stR === "Empire"){
       opR.style.display = "block"
-      return true
+      opE.style.display = "none";
   }else if (stR === "Rebels"){
       opR.style.display = "none";
       opE.style.display = "block";
-      return true
   }else{
     console.log("error")
   }
 }
-val()
+var sideValid = function(){
+  let stR = document.querySelector(".stR").value;
+  let op = document.querySelector(".op").value;
+  if(stR == op){
+    return false;
+  }else{
+    return true
+  }
+}
 
 // ******************************************************
 // form round and token validation
@@ -69,14 +73,14 @@ var roundValid = function(){
 
 function isValidForm(){
 let roundV = roundValid();
-let valV = val();
-if (roundV && valV) {
+let sideV = sideValid();
+if (roundV && sideV) {
   return true;
 } else if(roundV == false) {
   alert("Yousa should check round and rebel marker, okeeday?!")
   return false;
 }
-else if(valV == false){
+else if(sideV == false){
   alert("Yusa Made Terrible Mistaken!!Check yusa Rebel or Empire side.")
   return false
 }

@@ -35,18 +35,6 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 
 
 
-
-
-
-
-
-// // odsylacz do formy do wypelniania wynikoiw
-// router.get("/new", middleware.isLoggedIn, function(req,res){
-// 	// res.render odda uzytkownikowi plik ktory wpiszemy
-// 	res.render("wynik/formul")
-// });
-
-
 router.get("/:id", function(req, res){
 	Wynik.findById(req.params.id).populate("comments").exec(function(err, foundWynik){
 		if(err){

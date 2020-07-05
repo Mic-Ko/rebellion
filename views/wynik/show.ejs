@@ -22,7 +22,7 @@
 						<li>Round:  <%= wynik.round %></li>
 						<li>Rebel marker: <%= wynik.token %></li>
 					</div>
-				<p><em>Submitted By <%=wynik.author.username%></em></p>
+				<p><em>Submitted By <a href="/users/<%= wynik.author.id %>"> <%= wynik.author.username %></em></p></a>
 				<% if(currentUser && wynik.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){%>
 <a class="ui orange basic button" href="/wynik/<%=wynik._id%>/edit">Edit</a>
 			<form id="delete" action="/wynik/<%=wynik._id%>?_method=DELETE" method="POST">

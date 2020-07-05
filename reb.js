@@ -12,6 +12,7 @@ var Wynik 			= require("./models/wynik"),
 	Comment			= require("./models/comment"),
 	User			= require("./models/user"),
 	session 		= require("express-session");
+require("dotenv").config();
 
 
 // requiring routes
@@ -23,7 +24,7 @@ var commentRoutes   = require("./routes/comments"),
 
 
 
-mongoose.connect("mongodb://localhost/wyniki_v2", {useUnifiedTopology: true,
+mongoose.connect("mongodb://localhost/wyniki_v4", {useUnifiedTopology: true,
 useNewUrlParser: true,});
 
 app.use(express.static("public"));
